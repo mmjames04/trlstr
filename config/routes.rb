@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :trails
-
   root 'welcome#index'
+
+  get "/auth/twitter/callback" => "sessions#create"
+
+  get "/signout" => "sessions#destroy", :as => :signout
+
+
+  resources :trails
+  resources :comments
+  resources :likes
 
 end
