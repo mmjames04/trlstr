@@ -1,31 +1,154 @@
+@import "susy";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "breakpoint";
+
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+	math: fluid,
+	output: float,
+	gutter-position: inside
+);
+
+$mobile: max-width 30em;
+$tablet: 30em 60em;
+$full: 60em;
+
+$small: 12;
+$medium: 10;
+$big: 6;
+
+$medium-margin: 1;
+$big-margin: 0;
+
 body {
   background-color: orange;
-  display: grid;
-  grid-columns: 200px 1% 1fr;
-  margin: auto;
-  max-width: 25em; }
+  font-family: sans-serif;
+  @include container(80%);
+ }
 
 header {
-  background-color: red; }
-  header #current_user {
+  background-color: red; 
+
+  #current_user {
     background-color: white;
     float: left;
-    width: 25%; }
-  header h1 {
+    text-align: center;
+
+    img {
+    	border-radius: 50%;
+    }
+
+  }
+  h1 {
     background-color: yellow;
-    width: 50%;
     text-align: center;
     clear: both; }
+}
 
 #trail-form {
-  background-color: green; }
+  background-color: green;
+  text-align: center; 
+}
+
+@include breakpoint($mobile) {
+	#trails-map {
+		@include span($small);
+		height: 20em;
+	}
+}
+@include breakpoint($tablet) {
+	#trails-map {
+		@include span($medium);
+		margin-left: span($medium-margin);
+		margin-right: span($medium-margin);
+	}
+}
+@include breakpoint($full) {
+	#trails-map {
+		@include span($big);
+		margin-left: span($big-margin);
+		margin-right: span($big-margin);
+		}
+	}
+
+@include breakpoint($full) {
+	#trails-map.fixed {
+		position: fixed;
+		top: 20px;
+		width: 40%;
+	}
+}
+
 
 #trails {
-  background-color: lightblue;
-  width: 50%;
-  margin: auto; }
+	background-color: lightblue;
+}
+
+@include breakpoint($mobile) {
+	#trails {
+	  @include span($small);
+  }
+}
+
+@include breakpoint($tablet) {
+	#trails {
+		@include span($medium);
+		margin-right: span($medium-margin);
+		margin-left: span($medium-margin);
+	}
+}
+
+@include breakpoint($full) {
+	#trails {
+		@include span(6 at 6);
+		margin-right: span($big-margin);
+		margin-left: span($big-margin);
+	}
+}
+@include breakpoint($full) {
+	#trails.scroll {
+		margin-left: 50%;
+		@include span($big);
+	}
+}
 
 #trail-title {
-  background-color: purple; }
+  background-color: purple; 
+  text-align: center;
+}
+
+#trail-list {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+}
+
+.trail-name {
+	font-size: large;
+	font-weight: bold;
+	text-decoration: none;
+
+}
+
+.trail-city {
+	display: inline-block;
+}
+
+.trail-state {
+	display: inline-block;
+}
+
+.trail-type {
+	margin-bottom: 1em;
+}
+
+footer {
+	text-align: center;
+	background-color: red;
+	@include span(12);
+}
+
 
 /*# sourceMappingURL=application.css.map */

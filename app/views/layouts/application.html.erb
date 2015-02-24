@@ -5,14 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 <div class="wrap">
 	<header>
 		<div id="current_user">
 			<% if current_user %>
-				Welcome <%= current_user.name %>
 				<img id="current_user_pic" src="<%= current_user.pic %>">
+				Welcome <%= current_user.name %>
 				<%= link_to "Sign Out", signout_path %>
 			<% else %>
 				<%= link_to "Sign in with Twitter", "/auth/twitter" %>
@@ -22,6 +23,10 @@
 	</header>
 
 <%= yield %>
+
+	<footer>
+		<h5><i class="fa fa-copyright"></i>James R. Corey</h5>
+	</footer>
 </div>
 </body>
 </html>

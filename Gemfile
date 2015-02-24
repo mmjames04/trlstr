@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'font-awesome-sass'
+gem 'breakpoint', '~> 2.5.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record

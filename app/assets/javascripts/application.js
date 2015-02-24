@@ -27,12 +27,10 @@ jQuery(document).ready(function($){
 	function success(pos) {
 		crd = pos.coords;
 
-		console.log('Your current position is:');
-		console.log('Latitude: ' + crd.latitude);
-		console.log('Longitude: ' + crd.longitude);
-		console.log('More or less ' + crd.accuracy + ' meters.')
-
 		var url_geo = "https://outdoor-data-api.herokuapp.com/api.json?api_key=e2f3a93a9713c78f65bd813104501e8b&q[radius]=25&[lat]=" + crd.latitude + "&[lon]=" + crd.longitude;
+
+		$('#trails-map').attr("src", "https://www.google.com/maps/embed/v1/view?key=AIzaSyAjoKTY16EkIxIqgVcBpo5kpXgDsz0sJGk&center=" + crd.latitude + "," + crd.longitude + "&zoom=12&maptype=satellite");
+
 	$.ajax({
 		url: url_geo,
 		dataType: 'jsonp',
@@ -42,10 +40,11 @@ jQuery(document).ready(function($){
 					for (i=0; i<10; i++){
 						trails.push(parsed_json.places[i]);
 						$("#trail-list").append(
-							"<li class='trail-name'>" + trails[i].name + "</li><li class='trail-city'>" + trails[i].city + "</li><li class='trail-state'>" + trails[i].state + "</li><li class='trail-directions'>" + trails[i].directions + "</li><li class='trail-lat'>" + trails[i].lat + "</li><li class='trail-lon'>" + trails[i].lon + "</li><li class='trail-type'>" + trails[i].activities[0].activity_type.name + "</li>");
+							"<li class='trail-name'><a href='/trail/:id'>" + trails[i].name + "</a></li><li class='trail-city'>" + trails[i].city + "</li>, <li class='trail-state'>" + trails[i].state + "</li><li class='trail-type'>" + trails[i].activities[0].activity_type.name + "</li>");
 					}
 				} 
 	})
+	
 
 	};
 	function error(err) {
@@ -75,4 +74,17 @@ jQuery(document).ready(function($){
 				
 			});			
 	})
+
+var offset = $('#trails-map').offset();
+$(window).scroll(function() {
+	var scrollTop = $(window).scrollTop();
+	if (offset.top<scrollTop) {
+		$('#trails-map').addClass('fixed');
+		$('#trails').addClass('scroll');
+	} else {
+		$('#trails-map').removeClass('fixed');
+		$('#trails').removeClass('scroll');
+	}
+});
+
 });
