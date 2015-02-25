@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
 					for (i=0; i<10; i++){
 						trails.push(parsed_json.places[i]);
 						$("#trail-list").append(
-							"<li class='trail-name'><a href='/trail/:id'>" + trails[i].name + "</a></li><li class='trail-city'>" + trails[i].city + "</li>, <li class='trail-state'>" + trails[i].state + "</li><li class='trail-type'>" + trails[i].activities[0].activity_type.name + "</li>");
+							"<li class='trail-name'><a href='/trail/:id'>" + trails[i].name + "</a></li><li class='trail-city'>" + trails[i].city + "</li>, <li class='trail-state'>" + trails[i].state + "</li><li class='trail-type'>" + trails[i].activities[0].activity_type_name + "</li><li class='trail-description'>" + trails[i].activities[0].description + "</li>");
 					}
 				} 
 	})

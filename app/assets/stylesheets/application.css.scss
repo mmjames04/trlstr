@@ -23,17 +23,17 @@ $medium-margin: 1;
 $big-margin: 0;
 
 body {
-  background-color: orange;
-  font-family: sans-serif;
+/*  background-color: orange;
+*/  font-family: sans-serif;
   @include container(80%);
  }
 
 header {
-  background-color: red; 
-
+/*  background-color: red; 
+*/
   #current_user {
-    background-color: white;
-    float: left;
+/*    background-color: white;
+*/    float: left;
     text-align: center;
 
     img {
@@ -42,14 +42,16 @@ header {
 
   }
   h1 {
-    background-color: yellow;
-    text-align: center;
-    clear: both; }
+/*    background-color: yellow;
+*/    text-align: center;
+    clear: both; 
+    font-size: xx-large;
+  }
 }
 
 #trail-form {
-  background-color: green;
-  text-align: center; 
+/*  background-color: green;
+*/  text-align: center; 
 }
 
 @include breakpoint($mobile) {
@@ -83,8 +85,8 @@ header {
 
 
 #trails {
-	background-color: lightblue;
-}
+/*	background-color: lightblue;
+*/}
 
 @include breakpoint($mobile) {
 	#trails {
@@ -115,21 +117,26 @@ header {
 }
 
 #trail-title {
-  background-color: purple; 
-  text-align: center;
+/*  background-color: purple; 
+*/  text-align: center;
 }
 
 #trail-list {
 	list-style: none;
 	padding: 0;
 	text-align: center;
+	border: 1px solid black;
+	padding: 1em;
 }
 
 .trail-name {
 	font-size: large;
 	font-weight: bold;
-	text-decoration: none;
-
+	margin-bottom: 1em;
+	a {
+		text-decoration: none;
+		color: black;
+	}
 }
 
 .trail-city {
@@ -142,12 +149,20 @@ header {
 
 .trail-type {
 	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+.trail-description {
+	margin-bottom: 1em;
+	border-bottom: 1px solid black;
+	height: 10em;
+	overflow: hidden;
 }
 
 footer {
 	text-align: center;
-	background-color: red;
-	@include span(12);
+/*	background-color: red;
+*/	@include span(12);
 }
 
 
