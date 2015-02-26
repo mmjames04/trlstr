@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>Trlstr</title>
+  	<meta charset="utf-8">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -28,5 +30,6 @@
 		<h5><i class="fa fa-copyright"></i> James R. Corey</h5>
 	</footer>
 </div>
+
 </body>
 </html>

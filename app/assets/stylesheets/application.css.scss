@@ -26,6 +26,11 @@ body {
 /*  background-color: orange;
 */  font-family: sans-serif;
   @include container(80%);
+/*  background-image: url(http://www.photography-match.com/views/images/gallery/Life_of_the_Forest_Trail_Assateague_Island_Ber.jpg);
+*/  background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	background-attachment: fixed;
  }
 
 header {
@@ -50,8 +55,7 @@ header {
 }
 
 #trail-form {
-/*  background-color: green;
-*/  text-align: center; 
+  text-align: center; 
 }
 
 @include breakpoint($mobile) {
@@ -85,8 +89,7 @@ header {
 
 
 #trails {
-/*	background-color: lightblue;
-*/}
+}
 
 @include breakpoint($mobile) {
 	#trails {
@@ -121,7 +124,7 @@ header {
 */  text-align: center;
 }
 
-#trail-list {
+.trail-list {
 	list-style: none;
 	padding: 0;
 	text-align: center;
@@ -129,10 +132,24 @@ header {
 	padding: 1em;
 }
 
+.submit {
+	background-color: transparent;
+	text-decoration: none;
+	border: none;
+	color: black;
+	cursor: pointer;
+	font-size: large;
+	font-weight: bold;
+}
+
+.trail {
+	border: 1px solid black;
+	padding: 1em;
+}
+
 .trail-name {
 	font-size: large;
 	font-weight: bold;
-	margin-bottom: 1em;
 	a {
 		text-decoration: none;
 		color: black;
@@ -148,22 +165,23 @@ header {
 }
 
 .trail-type {
+	border-bottom: 1px solid black;
+	padding-bottom: 1em;
 	margin-bottom: 1em;
-	margin-top: 1em;
 }
 
-.trail-description {
-	margin-bottom: 1em;
-	border-bottom: 1px solid black;
-	height: 10em;
-	overflow: hidden;
-}
 
 footer {
 	text-align: center;
 /*	background-color: red;
 */	@include span(12);
 }
+
+#name {
+
+}
+
+
 
 
 /*# sourceMappingURL=application.css.map */

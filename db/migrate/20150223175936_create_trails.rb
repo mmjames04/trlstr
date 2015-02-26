@@ -3,7 +3,7 @@ class CreateTrails < ActiveRecord::Migration
     create_table :trails do |t|
       t.string :trail_id
 
-      t.timestamps null: false
+      t.timestamps 
     end
   end
 end

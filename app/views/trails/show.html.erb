@@ -1,0 +1,41 @@
+<a href='/'>Back</a>
+
+<h1> Your Trail Choice</h1>
+
+<div class='trail'>
+<ul class='trail-list'>
+		<li id="name"><%= @trail.name %></li>
+		<li id="city"><%= @trail.city %></li>
+		<li id="state"><%= @trail.state %></li>
+		<li id="lat"><%= @trail.lat %></li>
+		<li id="lon"><%= @trail.lon %></li>
+		<li id="type1"><%= @trail.type1 %></li>
+		<li id="length"><%= @trail.length %></li>
+		<li id="description"><%= @trail.description %></li>
+		<li id="pic"><%= @trail.pic %></li>
+		<li id="rating"><%= @trail.rating %></li>
+</ul>
+</div>
+
+<form>
+	<input type="textarea" placeholder="comment">
+	<input type="submit">
+</form>
+
+<form>
+	<label>Like</label><input type="checkbox">
+</form>
+
+<div id="your-trail">
+	<ul id="the-trail">
+	</ul>
+
+</div>
+
+<iframe
+	id="trails-map-dir"
+  width="450"
+  height="450"
+  frameborder="0" style="border:0"
+  src="">
+</iframe>
