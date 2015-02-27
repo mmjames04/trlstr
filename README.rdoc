@@ -1,28 +1,40 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Trlstr
+---------------
+Still in development!
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Trlstr is an app to quickly find a hiking/biking trail near you.  When you load the app, a map and list of trails in your area automatically displays.  You can also search for trails near a particular city.  You can then click on a trail which takes you to a show page with more details and a map with directions from your current location to the trailhead.  On the show page you can comment and like on the trail.  
+
+I used Susy and Breakpoint to make the site responsive with a mobile first design.
+
+Technologies Used
+
+Ruby on Rails
+jQuery
+Ajax
+Trail API
+Google Map API
+Susy
+Breakpoint
+Postgresql
+Omniauth
+
+ERDs
+
+User has many comments
+User has many likes
+Trail has many comments
+Trail has many likes
+Comment belongs to User and Trail
+Like belongs to User and Trail
+
+User Stories
+User can view list of all trails near them
+User can view map of trails near them
+User can view specific details about trail of interest
+User can get map with directions from their current location to the trailhead
+User can comment and like the trail
+User can view all comments and likes for each trail
+User can edit and delte comments and likes they made
+
+

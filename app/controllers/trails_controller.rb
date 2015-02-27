@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
 		@trail = Trail.new(trails_params)
 		
 		@trail.save
-		render nothing: true
+		render json: {:trail => @trail}
 	end
 
 	def new
@@ -35,6 +35,8 @@ class TrailsController < ApplicationController
 		@trails = Trail.all
 		@trail = Trail.find(params[:id])
 		@users = User.all
+		@comments = Comment.find_by(:trail_id =>params[:trail_id])
+		@likes = Like.find_by(:trail_id =>params[:trail_id])
 	end
 
 	private

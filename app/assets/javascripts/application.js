@@ -17,7 +17,7 @@
 
 
 jQuery(document).ready(function($){
-	
+	console.log("yeah")
 	var options = {
 		enableHighAccuracy: true,
 		timeout: 5000,
@@ -53,7 +53,7 @@ $.ajax({
 				var length = parsed_json.places[i].activities[j].length
 				}
 			}
-		$(".trail-list").append("<li class='trail-name'><a href='/trails/3'>" + name + "</a></li><li class='trail-city'>" + city + "</li>, <li class='trail-state'>" + state + "</li><li class='trail-type'>" + activityType + "</li>")
+		
 		var trailData = {
 			trail_id : trail_id,
 			name : name,
@@ -61,7 +61,7 @@ $.ajax({
 			state : state,
 			lat : lat,
 			lon : lon,
-			type1 : activityType[0],
+			type1 : activityType,
 			type2 : null,
 			length : length,
 			description : activityDesc,
@@ -73,7 +73,12 @@ $.ajax({
 			url: '/trails',
 			data: {trail: trailData},
 			dataType: 'json',
-			type: 'POST'
+			type: 'POST',
+			success: function(result){
+				$(".trail-list").append("<li class='trail-name'><a href='/trails/" + result.trail.id + "'>" + result.trail.name + "</a></li><li class='trail-city'>" + result.trail.city + "</li>, <li class='trail-state'>" + result.trail.state + "</li><li class='trail-type'>" + result.trail.type1 + "</li>")
+console.log(result.trail)
+			}
+
 
 				});
 }
@@ -86,33 +91,33 @@ $.ajax({
 	navigator.geolocation.getCurrentPosition(success, error, options);
 
 
-	// $("#trail_search").on('submit', function(event){
-	// 	event.preventDefault();
+	$("#trail_search").on('submit', function(event){
+		event.preventDefault();
 
-	// 	var city = $('#city').val();
-	// 	var url = "https://outdoor-data-api.herokuapp.com/api.json?api_key=e2f3a93a9713c78f65bd813104501e8b&q[city_cont]=" + city;
-	// 	$('#city').val('');
-	// 	$.ajax({
-	// 				url: url,
-	// 				dataType: 'jsonp',
-	// 				success: function(parsed_json) {
-	// 				for (i=0; i<parsed_json.places.length; i++){
-	// 					var name = parsed_json.places[i].name
-	// 					var city = parsed_json.places[i].city
-	// 					var state = parsed_json.places[i].state
-	// 					var trail_id = parsed_json.places[i].unique_id
-	// 					if (parsed_json.places[i].activities) { 
-	// 						for (var j=0; j<parsed_json.places[i].activities.length; j++){
-	// 							var activityType = parsed_json.places[i].activities[j].activity_type_name
-	// 							var activityDesc = parsed_json.places[i].activities[j].description
-	// 						$("#trail-list").replaceWith("<li class='trail-name'><form action='/trails/new' method='get'><input type='submit' value='" + name + "' class='submit'/><input class='trail_id' name='trail[trail_id]' value='" + trail_id + "'></input></form><li class='trail-city'>" + city + ", " + state + "</li><li class='trail-type'>" + activityType + "</li>")
-	// 						$('.trail_id').hide();
-	// 				}
-	// 			} 
-	// 			}			
-	// 		}			
-	// 	});
-	// });
+		var city = $('#city').val();
+		var url = "https://outdoor-data-api.herokuapp.com/api.json?api_key=e2f3a93a9713c78f65bd813104501e8b&q[city_cont]=" + city;
+		$('#city').val('');
+		$.ajax({
+					url: url,
+					dataType: 'jsonp',
+					success: function(parsed_json) {
+					for (i=0; i<parsed_json.places.length; i++){
+						var name = parsed_json.places[i].name
+						var city = parsed_json.places[i].city
+						var state = parsed_json.places[i].state
+						var trail_id = parsed_json.places[i].unique_id
+						if (parsed_json.places[i].activities) { 
+							for (var j=0; j<parsed_json.places[i].activities.length; j++){
+								var activityType = parsed_json.places[i].activities[j].activity_type_name
+								var activityDesc = parsed_json.places[i].activities[j].description
+							$("#trail-list").replaceWith("<li class='trail-name'><form action='/trails/new' method='get'><input type='submit' value='" + name + "' class='submit'/><input class='trail_id' name='trail[trail_id]' value='" + trail_id + "'></input></form><li class='trail-city'>" + city + ", " + state + "</li><li class='trail-type'>" + activityType + "</li>")
+							$('.trail_id').hide();
+					}
+				} 
+				}			
+			}			
+		});
+	});
 
 var offset = $('#trails-map').offset();
 $(window).scroll(function() {
@@ -126,6 +131,9 @@ $(window).scroll(function() {
 	}
 });
 
+$('#back-button').on('click', function(){
+	document.location = '/'
+})
 
 
 });
