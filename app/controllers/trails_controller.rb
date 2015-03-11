@@ -3,27 +3,18 @@ require 'pry'
 class TrailsController < ApplicationController
 
 	def create
-		@trail = Trail.new(trails_params)
-		
-		@trail.save
-		render json: {:trail => @trail}
+		@trail_id = params[:trail][:trail_id]
+		if Trail.exists?(:trail_id => @trail_id)
+
+		else
+			@trail = Trail.new(trails_params)
+			@trail.save
+			render json: {:trail => @trail}
+		end
+		redirect_to '/trails'
 	end
 
 	def new
-		@trail_id = params[:trail_id]
-
-		if Trail.exists?(:trail_id => @trail_id)
-			@trail = Trail.find_by(:trail_id => params[:trail_id])
-			redirect_to "/trails/#{@trail.id}"
-		else
-			@trail = Trail.new(trails_params)
-
-			if @trail.save
-				redirect_to "/trails/#{@trail.id}"
-			else
-				redirect_to "/"
-			end
-		end
 
 	end
 
@@ -33,7 +24,7 @@ class TrailsController < ApplicationController
 
 	def show
 		@trails = Trail.all
-		@trail = Trail.find(params[:id])
+		@trail = Trail.find_by(:trail_id => params[:id])
 		@users = User.all
 		@comments = Comment.find_by(:trail_id =>params[:trail_id])
 		@likes = Like.find_by(:trail_id =>params[:trail_id])

@@ -1,16 +1,24 @@
-<a id='back-button'>Back</a>
+<a href='/'>Back</a>
 
-<h1> Your Trail Choice</h1>
+<h1> <%= @trail.name %></h1>
 
-<div class='trail'>
-<ul class='trail-list'>
-		<li id="pic"><img src="' + <%= @trail.pic %> + '"></li>
-		<li id="name"><%= @trail.name %></li>
-		<li id="city"><%= @trail.city %>, <%= @trail.state %></li>
-		<li id="type1">Activity: <%= @trail.type1 %></li>
-		<li id="length">Trail Length: <%= @trail.length %> miles</li>
-		<li id="description"><%= @trail.description %></li>
-</ul>
+<iframe
+	id="trail-map"
+  width="450"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAjoKTY16EkIxIqgVcBpo5kpXgDsz0sJGk&center=<%= @trail.lat %>,<%= @trail.lon %>&zoom=14&maptype=satellite">
+</iframe>
+
+<div id='trail'>
+	<ul id='trail-list'>
+			<li id="pic"><img src="<%= @trail.pic %>"></li>
+			<li id="name"><%= @trail.name %></li>
+			<li id="city"><%= @trail.city %>, <%= @trail.state %></li>
+			<li id="type1">Activity: <%= @trail.type1.capitalize %></li>
+			<li id="length">Trail Length: <%= @trail.length %> miles</li>
+			<li id="description"><%= @trail.description %></li>
+	</ul>
 </div>
 
 <form>
@@ -23,17 +31,3 @@
 	<input type="submit">
 </form>
 
-
-<div id="your-trail">
-	<ul id="the-trail">
-	</ul>
-
-</div>
-
-<iframe
-	id="trails-map-dir"
-  width="450"
-  height="450"
-  frameborder="0" style="border:0"
-  src="">
-</iframe>

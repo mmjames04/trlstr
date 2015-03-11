@@ -5,8 +5,6 @@ class UsersController < ApplicationController
 
 
 	def index
-		@users = User.all
-		@user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 
 

@@ -23,22 +23,13 @@ $medium-margin: 1;
 $big-margin: 0;
 
 body {
-/*  background-color: orange;
-*/  font-family: sans-serif;
+  font-family: sans-serif;
   @include container(80%);
-/*  background-image: url(http://www.photography-match.com/views/images/gallery/Life_of_the_Forest_Trail_Assateague_Island_Ber.jpg);
-*/  background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100%;
-	background-attachment: fixed;
  }
 
 header {
-/*  background-color: red; 
-*/
   #current_user {
-/*    background-color: white;
-*/    float: left;
+   	float: left;
     text-align: center;
 
     img {
@@ -46,17 +37,21 @@ header {
     }
 
   }
-  h1 {
-/*    background-color: yellow;
-*/    text-align: center;
+  #title {
+	font-family: 'Delius Unicase', cursive;  
+	text-align: center;
     clear: both; 
     font-size: xx-large;
   }
+ 
 }
 
 #trail-form {
   text-align: center; 
 }
+
+/*map list view
+*/
 
 @include breakpoint($mobile) {
 	#trails-map {
@@ -120,11 +115,10 @@ header {
 }
 
 #trail-title {
-/*  background-color: purple; 
-*/  text-align: center;
+	text-align: center;
 }
 
-.trail-list {
+#trails-list {
 	list-style: none;
 	padding: 0;
 	text-align: center;
@@ -142,11 +136,11 @@ header {
 	font-weight: bold;
 }
 
-.trail {
+/*.trail {
 	border: 1px solid black;
 	padding: 1em;
 }
-
+*/
 .trail-name {
 	font-size: large;
 	font-weight: bold;
@@ -177,8 +171,97 @@ footer {
 */	@include span(12);
 }
 
-#name {
+/*map show view
+*/
 
+@include breakpoint($mobile) {
+	#trail-map {
+		@include span($small);
+		height: 20em;
+	}
+}
+@include breakpoint($tablet) {
+	#trail-map {
+		@include span($medium);
+		margin-left: span($medium-margin);
+		margin-right: span($medium-margin);
+	}
+}
+@include breakpoint($full) {
+	#trail-map {
+		@include span($big);
+		margin-left: span($big-margin);
+		margin-right: span($big-margin);
+		}
+	}
+
+@include breakpoint($full) {
+	#trail-map.fixed {
+		position: fixed;
+		top: 20px;
+		width: 40%;
+	}
+}
+
+#trail {
+}
+
+@include breakpoint($mobile) {
+	#trail {
+	  @include span($small);
+  }
+}
+
+@include breakpoint($tablet) {
+	#trail {
+		@include span($medium);
+		margin-right: span($medium-margin);
+		margin-left: span($medium-margin);
+	}
+}
+
+@include breakpoint($full) {
+	#trail {
+		@include span(6 at 6);
+		margin-right: span($big-margin);
+		margin-left: span($big-margin);
+	}
+}
+@include breakpoint($full) {
+	#trail.scroll {
+		margin-left: 50%;
+		@include span($big);
+	}
+}
+
+#trail-title {
+	text-align: center;
+}
+
+#trail-list {
+	list-style: none;
+	padding: 0;
+	text-align: center;
+	border: 1px solid black;
+	padding: 1em;
+}
+
+@include breakpoint($mobile) {
+	#pic img {
+			max-width: 100%;
+	}
+}
+
+@include breakpoint($tablet) {
+	#pic img {
+			max-width: 100%;
+	}
+}
+
+@include breakpoint($full) {
+	#pic img {
+			max-width: 100%;
+	}
 }
 
 

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Trlstr</title>
+  	<link href='http://fonts.googleapis.com/css?family=Delius+Unicase:700' rel='stylesheet' type='text/css'>
   	<meta charset="utf-8">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -21,13 +22,15 @@
 				<%= link_to "Sign in with Twitter", "/auth/twitter" %>
 			<% end %>
 		</div>
-		<h1>Trlstr</h1>
+		<div id="logo">
+			<h1 id="title">Trlstr</h1>
+		</div>
 	</header>
 
 <%= yield %>
 
 	<footer>
-		<h5><i class="fa fa-copyright"></i> James R. Corey</h5>
+		<h5><i class="fa fa-copyright"></i> 2015 James R. Corey</h5>
 	</footer>
 </div>
 

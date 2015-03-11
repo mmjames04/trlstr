@@ -17,7 +17,6 @@
 
 
 jQuery(document).ready(function($){
-	console.log("yeah")
 	var options = {
 		enableHighAccuracy: true,
 		timeout: 5000,
@@ -69,18 +68,20 @@ $.ajax({
 			rating : rating
 		};
 
+		$("#trails-list").append("<li class='trail-name'><a href='/trails/" + trail_id + "'>" + name + "</a></li><li class='trail-city'>" + city + "</li>, <li class='trail-state'>" + state + "</li><li class='trail-type'></li>")
+
+
 		$.ajax({
 			url: '/trails',
 			data: {trail: trailData},
 			dataType: 'json',
 			type: 'POST',
 			success: function(result){
-				$(".trail-list").append("<li class='trail-name'><a href='/trails/" + result.trail.id + "'>" + result.trail.name + "</a></li><li class='trail-city'>" + result.trail.city + "</li>, <li class='trail-state'>" + result.trail.state + "</li><li class='trail-type'>" + result.trail.type1 + "</li>")
-console.log(result.trail)
-			}
-
-
-				});
+console.log(result.trail.name)
+console.log(result.trail.id)
+console.log(result.trail.trail_id)
+			}	
+		});
 }
 }
 });
@@ -106,23 +107,51 @@ console.log(result.trail)
 						var city = parsed_json.places[i].city
 						var state = parsed_json.places[i].state
 						var trail_id = parsed_json.places[i].unique_id
+						var lat = parsed_json.places[i].lat
+						var lon = parsed_json.places[i].lon
+
 						if (parsed_json.places[i].activities) { 
 							for (var j=0; j<parsed_json.places[i].activities.length; j++){
 								var activityType = parsed_json.places[i].activities[j].activity_type_name
 								var activityDesc = parsed_json.places[i].activities[j].description
-							$("#trail-list").replaceWith("<li class='trail-name'><form action='/trails/new' method='get'><input type='submit' value='" + name + "' class='submit'/><input class='trail_id' name='trail[trail_id]' value='" + trail_id + "'></input></form><li class='trail-city'>" + city + ", " + state + "</li><li class='trail-type'>" + activityType + "</li>")
-							$('.trail_id').hide();
+								var pic = parsed_json.places[i].activities[j].thumbnail
+								var rating = parsed_json.places[i].activities[j].rating
+								var length = parsed_json.places[i].activities[j].length
+							}
+						}
+
+						var trailData = {
+							trail_id : trail_id,
+							name : name,
+							city : city,
+							state : state,
+							lat : lat,
+							lon : lon,
+							type1 : activityType,
+							type2 : null,
+							length : length,
+							description : activityDesc,
+							pic : pic,
+							rating : rating
+						};
+						$.ajax({
+							url: '/trails',
+							data: {trail: trailData},
+							dataType: 'json',
+							type: 'POST',
+							success: function(result){
+								$("#trails-list").prepend("<li class='trail-name'><a href='/trails/" + result.trail.id + "'>" + result.trail.name + "</a></li><li class='trail-city'>" + result.trail.city + "</li>, <li class='trail-state'>" + result.trail.state + "</li><li class='trail-type'>" + result.trail.type1 + "</li>")
+							}
+						})
 					}
 				} 
-				}			
-			}			
-		});
-	});
+				})			
+			});
 
-var offset = $('#trails-map').offset();
+var offset1 = $('#trails-map').offset();
 $(window).scroll(function() {
 	var scrollTop = $(window).scrollTop();
-	if (offset.top<scrollTop) {
+	if (offset1.top<scrollTop) {
 		$('#trails-map').addClass('fixed');
 		$('#trails').addClass('scroll');
 	} else {
@@ -131,15 +160,6 @@ $(window).scroll(function() {
 	}
 });
 
-$('#back-button').on('click', function(){
-	document.location = '/'
-})
-
-
 });
-
-
-
-
 
 
