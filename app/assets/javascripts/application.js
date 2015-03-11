@@ -67,19 +67,13 @@ $.ajax({
 			pic : pic,
 			rating : rating
 		};
-
-		$("#trails-list").append("<li class='trail-name'><a href='/trails/" + trail_id + "'>" + name + "</a></li><li class='trail-city'>" + city + "</li>, <li class='trail-state'>" + state + "</li><li class='trail-type'></li>")
-
-
 		$.ajax({
 			url: '/trails',
 			data: {trail: trailData},
 			dataType: 'json',
 			type: 'POST',
 			success: function(result){
-console.log(result.trail.name)
-console.log(result.trail.id)
-console.log(result.trail.trail_id)
+				$("#trails-list").append("<li class='trail-name'><a href='/trails/" + result.trail_id + "'>" + result.name + "</a></li><li class='trail-city'>" + result.city + "</li>, <li class='trail-state'>" + result.state + "</li><li class='trail-type'></li>")
 			}	
 		});
 }
@@ -90,6 +84,7 @@ console.log(result.trail.trail_id)
 		console.warn('ERROR(' + err.code + '): ' + err.message);
 	};
 	navigator.geolocation.getCurrentPosition(success, error, options);
+
 
 
 	$("#trail_search").on('submit', function(event){

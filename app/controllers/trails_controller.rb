@@ -5,13 +5,15 @@ class TrailsController < ApplicationController
 	def create
 		@trail_id = params[:trail][:trail_id]
 		if Trail.exists?(:trail_id => @trail_id)
+			@trail = params[:trail]
+				render json: {:trail => @trail} 
 
 		else
 			@trail = Trail.new(trails_params)
-			@trail.save
-			render json: {:trail => @trail}
+			if @trail.save
+				render json: {:trail => @trail} 
+			end
 		end
-		redirect_to '/trails'
 	end
 
 	def new
@@ -35,5 +37,4 @@ class TrailsController < ApplicationController
 	def trails_params
 		params.require(:trail).permit(:trail_id, :name, :city, :state, :lat, :lon, :type1, :type2, :length, :description, :pic, :rating)
 	end
-
 end
