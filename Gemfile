@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.2"
 
 gem 'figaro'
 gem 'omniauth'
@@ -10,6 +10,7 @@ gem 'breakpoint', '~> 2.5.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
