@@ -295,20 +295,33 @@ ul {
 	}
 }
 
-#comment {
-	text-align: center;
-}
-
 @include breakpoint($mobile) {
 	#comment form {
+		@include span($small);
+	}
+	textarea {
+		height: 4em;
 		@include span($small);
 	}
 }
 
 @include breakpoint($full) {
-	#comment form {
+	#comment-form {
 		@include span($big);
-		width: 50%;
+		margin-right: 25%;
+		margin-left: 25%;
+		margin-bottom: 3em;
+		margin-top: 3em;
+		text-align: center;
 	}
+	textarea {
+		height: 10em;
+		width: 40em;
+	}
+}
+
+#comment-list {
+	text-align: center;
+	display: block;
 }
 /*# sourceMappingURL=application.css.map */
