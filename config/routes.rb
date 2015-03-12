@@ -6,8 +6,14 @@ Rails.application.routes.draw do
 
   get "/signout" => "sessions#destroy", :as => :signout
 
+  post "trails/:id" => "trails#show"
 
-  resources :trails
+  resources :trails do
+  	member do
+  		put "like", to: "trails#upvote"
+  		put "dislike", to: "trails#downvote"
+  	end
+  end
 
 
   resources :comments

@@ -136,7 +136,7 @@ $.ajax({
 							dataType: 'json',
 							type: 'POST',
 							success: function(result){
-								$("#trails-list").prepend("<li class='trail-name'><a href='/trails/" + result.trail.id + "'>" + result.trail.name + "</a></li><li class='trail-city'>" + result.trail.city + "</li>, <li class='trail-state'>" + result.trail.state + "</li><li class='trail-type'>" + result.trail.type1 + "</li>")
+								$("#trails-list").prepend("<li class='trail-name'><a href='/trails/" + result.trail_id + "'>" + result.trail.name + "</a></li><li class='trail-city'>" + result.trail.city + "</li>, <li class='trail-state'>" + result.trail.state + "</li><li class='trail-type'>" + result.trail.type1 + "</li>")
 							}
 						})
 					}
@@ -155,6 +155,8 @@ $(window).scroll(function() {
 		$('#trails').removeClass('scroll');
 	}
 });
+
+
 
 });
 

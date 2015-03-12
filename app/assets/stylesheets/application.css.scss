@@ -264,7 +264,51 @@ footer {
 	}
 }
 
+ul {
+	list-style: none;
+	padding: 0;
+	text-align: center;
 
+	#upbutton {
+		display: inline-block;
+		margin-bottom: 1em;
+	}
+	#downbutton {
+		display: inline-block;
+		margin-bottom: 1em;
+	}
+	#votescore {
+/*		display: inline-block;
+*/	}
+}
 
+@include breakpoint($mobile) {
+	#votes ul {
+		@include span($small);
+	}
+}
 
+@include breakpoint($full) {
+	#votes ul {
+		@include span($big);
+		width: 50%;
+	}
+}
+
+#comment {
+	text-align: center;
+}
+
+@include breakpoint($mobile) {
+	#comment form {
+		@include span($small);
+	}
+}
+
+@include breakpoint($full) {
+	#comment form {
+		@include span($big);
+		width: 50%;
+	}
+}
 /*# sourceMappingURL=application.css.map */

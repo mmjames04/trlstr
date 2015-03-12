@@ -28,8 +28,26 @@ class TrailsController < ApplicationController
 		@trails = Trail.all
 		@trail = Trail.find_by(:trail_id => params[:id])
 		@users = User.all
-		@comments = Comment.find_by(:trail_id =>params[:trail_id])
+		@comments = Comment.where(:trail_id => params[:id])
 		@likes = Like.find_by(:trail_id =>params[:trail_id])
+	end
+
+	def upvote
+		@trail = Trail.find(params[:id])
+		@trail.upvote_by current_user
+		respond_to do |format|
+			format.html {redirect_to :back }
+			format.json { render json: { count: @trail.count}}
+		end
+	end
+
+	def downvote
+		@trail = Trail.find(params[:id])
+		@trail.downvote_by current_user
+		respond_to do |format|
+			format.html {redirect_to :back }
+			format.json { render json: {count: @trail.count}}
+		end
 	end
 
 	private
