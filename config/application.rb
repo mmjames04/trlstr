@@ -9,7 +9,6 @@ require 'pry'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-c
 
 module Trlstr
   class Application < Rails::Application
