@@ -296,7 +296,7 @@ ul {
 }
 
 @include breakpoint($mobile) {
-	#comment form {
+	#comment-form {
 		@include span($small);
 	}
 	textarea {
@@ -304,6 +304,20 @@ ul {
 		@include span($small);
 	}
 }
+
+@include breakpoint($tablet) {
+	#comment-form {
+		@include span($medium);
+		margin-right: span($medium-margin);
+		margin-left: span($medium-margin);
+		margin-bottom: 2em;
+	}
+	textarea {
+		@include span($medium);
+		height: 10em;
+	}
+}
+
 
 @include breakpoint($full) {
 	#comment-form {
